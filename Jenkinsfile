@@ -48,6 +48,7 @@ pipeline {
         container('kustomize'){
           dir('deployment'){
             sh '''
+            export KUBECONFIG=/home/rocky/cjone-kube-test_kubeconfig.yaml
             kubectl apply -f configmap.yaml
             kustomize create --resources ./deployment.yaml
             echo "deploy new deployment"
